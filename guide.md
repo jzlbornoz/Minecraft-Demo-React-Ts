@@ -11,3 +11,24 @@
 - `@react-three/drei`
 - `@react-three/cannon` --> Fisicas
 - `npm i @react-three/fiber @react-three/drei @react-three/cannon -E`
+
+## Proyecto
+
+- El proyecto tiene el index en `./app/page.tsx`, todo el proyecto debe ser hijo del componente Canva.
+
+```
+'use client'
+import { Sky } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
+import "./globals.css";
+
+export default function Home(): JSX.Element {
+  return (
+    <Canvas> 
+      <Sky /> // Componente del cielo
+    </Canvas>
+
+  )
+}
+
+```
