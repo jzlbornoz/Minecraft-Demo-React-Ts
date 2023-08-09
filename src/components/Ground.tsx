@@ -1,45 +1,3 @@
-# Minecraft Clon con React y TypeScript
-
-## ThreeJs
-
-- Para realizar este proyecto se utilizaran las siguientes dependencias de ThreeJs, es una libreria que permite construir componentes en 2D y 3D utilizando la API de webGL.
-- WebGL es una API de bajo nivel que le permite al navegador acceder a la GPU para graficar en el mismo.
-
-### Dependencias Principales
-
-- `@react-three/fiber`
-- `@react-three/drei`
-- `@react-three/cannon` --> Fisicas
-- `npm i @react-three/fiber @react-three/drei @react-three/cannon -E`
-
-## Proyecto
-
-- El proyecto tiene el index en `./app/page.tsx`, todo el proyecto debe ser hijo del componente Canva.
-
-```
-'use client'
-import { Sky } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import "./globals.css";
-
-export default function Home(): JSX.Element {
-  return (
-    <Canvas>
-      <Sky /> // Componente del cielo
-    </Canvas>
-
-  )
-}
-
-```
-
-### Suelo
-
-- Se crea el componente Ground.tsx
-
-- components/Ground.tsx
-
-```
 import { usePlane } from '@react-three/cannon'
 import { Plane } from '@react-three/drei';
 import React, { useRef } from 'react'
@@ -47,7 +5,7 @@ import React, { useRef } from 'react'
 const Ground = () => {
     const meshRef = useRef<THREE.Mesh>(null);
 
-    /* usePlane(): Este hook crea una superficie plana en el mundo 3D y devuelve una referencia al objeto 3D
+    /* usePlane(): Este hook crea una superficie plana en el mundo 3D y devuelve una referencia al objeto 3D 
     y sus propiedades físicas. */
     const [ref] = usePlane(() => ({
         rotation: [-Math.PI / 2, 0, 0], // Rotación de la superficie para que esté paralela al plano horizontal.
@@ -56,7 +14,7 @@ const Ground = () => {
 
     /*El hook usePlane devuelve la referencia "ref" que se utiliza para adjuntar la superficie plana al mundo 3D.
     La referencia "ref" se aplicará al objeto 3D creado por el hook usePlane para renderizar la superficie plana en la escena.
-
+    
     El componente <mesh>: Este componente representa una malla 3D en la escena.
     */
     return (
@@ -69,4 +27,3 @@ const Ground = () => {
 }
 
 export { Ground }
-```
