@@ -1,7 +1,9 @@
+import React, { useRef, useEffect } from 'react';
 import { usePlane } from '@react-three/cannon';
 import { Plane } from '@react-three/drei';
-import React, { useRef, useEffect } from 'react';
 import { Mesh } from 'three';
+
+import { groundTexture } from '@/images/textures';
 
 const Ground = () => {
     const meshRef = useRef<Mesh>(null); // Crea una referencia del Tipo Mesh para la malla
@@ -20,12 +22,15 @@ const Ground = () => {
         }
     }, [meshRef, planeRef]);
 
+    groundTexture.repeat.set(100,100); //Para pixelear el suelo.
+
     return (
         <group>
             <mesh ref={meshRef}>
                 {/* Aca dentro se define la geometria y el material de la malla*/}
-                <Plane args={[100, 100]} />
-                <meshStandardMaterial attach='material' color={'green'} />
+                <Plane args={[100, 100]}>
+                    <meshStandardMaterial attach='material' map={groundTexture}/>
+                </Plane>
             </mesh>
         </group>
     );
